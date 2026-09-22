@@ -1,0 +1,7 @@
+
+/ollama-python-ref/
+.DS_Store
+__pycache__/
+.vscode/
+.streamlit/secrets.toml
+.devcontainer/

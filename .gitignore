@@ -2,6 +2,8 @@
 /ollama-python-ref/
 .DS_Store
 __pycache__/
+.pytest_cache/
 .vscode/
 .streamlit/secrets.toml
 .devcontainer/
+data/

@@ -101,28 +101,39 @@ def render_sidebar(config: Config) -> dict:
   }
 
 
+NEW_CONVERSATION = '__new_conversation__'
+
+
 def render_conversation_list(storage: Storage) -> str | None:
   active = storage.list_active()
   st.sidebar.markdown('#### Conversations')
 
   if st.sidebar.button('➕ New conversation', use_container_width=True):
     st.session_state.current_id = None
+    st.session_state.pop('conv_select', None)
     st.rerun()
 
   labels = {c.id: c.title for c in active}
   ids = [c.id for c in active]
+
+  if 'current_id' not in st.session_state and ids:
+    # On first load, resume the most recent conversation.
+    st.session_state.current_id = ids[0]
+
   current = st.session_state.get('current_id')
 
   if ids:
-    index = ids.index(current) if current in ids else 0
+    labels[NEW_CONVERSATION] = '— New conversation —'
+    options = [NEW_CONVERSATION, *ids]
+    index = ids.index(current) + 1 if current in ids else 0
     selected = st.sidebar.selectbox(
       'Select conversation',
-      ids,
+      options,
       index=index,
       format_func=lambda cid: labels.get(cid, cid),
       key='conv_select',
     )
-    st.session_state.current_id = selected
+    st.session_state.current_id = None if selected == NEW_CONVERSATION else selected
   else:
     st.sidebar.caption('No conversations yet.')
 
@@ -130,6 +141,7 @@ def render_conversation_list(storage: Storage) -> str | None:
   if current and st.sidebar.button('📦 Archive conversation', use_container_width=True):
     storage.archive(current)
     st.session_state.current_id = None
+    st.session_state.pop('conv_select', None)
     st.rerun()
 
   archived = storage.list_archived()
@@ -213,4 +225,5 @@ if user_input:
       convo.derive_title()
       storage.save(convo)
       st.session_state.current_id = convo.id
+      st.session_state.pop('conv_select', None)
       st.rerun()

@@ -1,4 +1,5 @@
-
+/data/
+/ollama-js-ref/
 /ollama-python-ref/
 .DS_Store
 __pycache__/

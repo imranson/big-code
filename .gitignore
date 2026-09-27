@@ -1,13 +1,37 @@
-.env
-.env*.local
+# dependencies
 /node_modules/
 
+# build output
+/.next/
+/out/
+
+# type-check / build caches
+*.tsbuildinfo
+next-env.d.ts
+
+# testing
+/coverage/
+.pytest_cache/
+
+# environment
+.env
+.env*.local
+
+# vendored reference code
 /ollama-js-ref/
 /ollama-python-ref/
+
+# runtime data
 /data/
 
+# legacy python / streamlit app
+/.streamlit/
+chatapp/
+
+# misc
 .DS_Store
 __pycache__/
+*.pyc
 .vscode/
-.streamlit/secrets.toml
 .devcontainer/
+*.pem

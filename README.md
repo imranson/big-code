@@ -2,7 +2,9 @@
 
 For Ollama Python library references, see `ollama-python-ref/`.
 
-## Setup
+For Ollama JS library references, see `ollama-js-ref/`.
+
+## Python Setup Only
 
 Requires Python 3.10+ (the code uses `str | None` union type syntax).
 

@@ -11,3 +11,8 @@ __pycache__/
 .vscode/
 .streamlit/secrets.toml
 .devcontainer/
+
+# Next.js
+/.next/
+next-env.d.ts
+*.tsbuildinfo

@@ -1,4 +1,4 @@
-export const DEFAULT_MODEL = 'gpt-oss:120b'
+export const DEFAULT_MODEL = 'kimi-k2.6:cloud'
 export const DEFAULT_CONTEXT_WINDOW = 128_000
 
 export interface AppConfig {

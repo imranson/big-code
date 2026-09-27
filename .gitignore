@@ -1,5 +1,11 @@
+.env
+.env*.local
+/node_modules/
 
+/ollama-js-ref/
 /ollama-python-ref/
+/data/
+
 .DS_Store
 __pycache__/
 .vscode/
